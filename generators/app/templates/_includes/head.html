@@ -1,0 +1,56 @@
+<head>
+  <!-- Visualization Tags -->
+  <meta content="IE=edge" http-equiv="X-UA-Compatible">
+  <meta charset="utf-8">
+  <meta content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+  <meta http-equiv="cache-control" content="public">
+
+  <!-- Base SEO Meta Tags -->
+  <title>{{ page.title }}</title>
+  <meta content="{{ page.description }}" name="description">
+  <meta name="keyword" content="">
+
+  <!-- Share Tags -->
+  <meta property="og:title" content="{{ page.title }}">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="">
+  <meta property="og:description" content="{{ page.description }}">
+  <meta property="og:image" content="">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="">
+  <meta name="twitter:site" content="@">
+  <meta name="twitter:description" content="{{ page.description }}">
+  <meta name="twitter:image" content="">
+  <meta property="og:url" content="index.html">
+
+  <!-- Author & Copyright -->
+  <meta name="author" content="John Doe">
+  <link rel="team" type="text/plain" href="/humans.txt">
+  <meta name="copyright" content="&copy; 2017 John Doe">
+
+  <!-- Favicon & Mobile Icons -->
+  <link rel="icon" sizes="192x192" type="image/png" href="">
+  <link rel="shortcut icon" type="image/x-icon" type="image/png" href="">
+  <link rel="manifest" href="{{ "/manifest.json" | relative_url }}">
+
+  <!-- Apple Human Interface -->
+  <meta name="apple-mobile-web-app-title" content="">
+  <link rel="mask-icon" href="" color="">
+  <link rel="apple-touch-startup-image" sizes="1242x2208" href="">
+  <link rel="apple-touch-startup-image" sizes="750x1334" href="">
+  <link rel="apple-touch-icon" sizes="180x180" href="">
+  <link rel="apple-touch-icon" sizes="120x120" href="">
+  <link rel="apple-touch-icon" sizes="167x167" href="">
+  <link rel="apple-touch-icon" sizes="152x152" href="">
+
+  <!-- Style Sheets -->
+  <link rel="stylesheet" href="/assets/css/main.css">
+  <!-- Replace with the code below for deploy -->
+  <!-- <link rel="stylesheet" href="/assets/css/main.min.css"> -->
+
+  <!-- 404 Page Redirect -->
+  {% if page.url == "/404.html" %}
+    <meta http-equiv="refresh" content="8; url=/">
+  {% endif %}
+
+</head>

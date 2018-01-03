@@ -1,0 +1,29 @@
+{
+  "name": "<%= projectName %>",
+  "short_name": "<%= projectName %>",
+  "icons": [{
+        "src": "",
+        "sizes": "128x128",
+        "type": "image/jpg"
+      }, {
+        "src": "",
+        "sizes": "144x144",
+        "type": "image/jpg"
+      }, {
+        "src": "",
+        "sizes": "152x152",
+        "type": "image/jpg"
+      }, {
+        "src": "",
+        "sizes": "192x192",
+        "type": "image/jpg"
+      }, {
+        "src": "",
+        "sizes": "512x512",
+        "type": "image/jpg"
+      }],
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "",
+  "theme_color": ""
+}

@@ -1,0 +1,13 @@
+## EXPIRES CACHING ##
+
+# 1 Week for most static assets
+<filesMatch ".(pdf|jpg|jpeg|png|gif|svg|ico|txt)$">
+Header set Cache-Control "max-age=604800, public"
+</filesMatch>
+
+# 12 Hour for css,js,ecc
+<filesMatch ".(js|css|json)$">
+Header set Cache-Control "max-age=43200, public"
+</filesMatch>
+
+## EXPIRES CACHING ##

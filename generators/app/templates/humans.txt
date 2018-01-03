@@ -1,0 +1,30 @@
+# The humans responsible & technology colophon
+
+/* TEAM */
+
+    <%= authorName %> - Your Title
+    Site: <%= authorUrl %>
+    Email: <%= authorEmail %>
+    Twitter: your Twitter username
+    Location: City, Country
+
+/* THANKS */
+
+    # John Doe's Team
+
+    John Doe
+    Jane Doe
+    Baby Doe
+
+    # Others
+
+    Jonnie Doe
+
+
+
+/* SITE */
+
+    Last update: YYYY/MM/DD
+    Standards: HTML5, CSS3, ...
+    Components: jQuery, Normalize, Jekyll, ...
+    Software: Software used for the development
