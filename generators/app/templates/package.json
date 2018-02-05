@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "<%= githubUrl %>"
+    "url": ""
   },
   "scripts": {
     "serve": "grunt serve",
     "build": "grunt build",
     "clear": "grunt clear"
   },
-  "license": "MIT",
+  "license": "",
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.1.0",
