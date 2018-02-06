@@ -1,4 +1,4 @@
-# generator-jekyll-rocks [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
+# generator-jekyll-rocks [![NPM version][npm-image]][npm-url] [![Build Status][Stable]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > 
 
 ## Installation
