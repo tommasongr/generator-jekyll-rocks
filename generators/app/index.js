@@ -22,51 +22,51 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'projectName',
-        message: '(1/6) What will be your project name?',
+        message: '(1/9) What will be your project name?',
         required: 'true',
         default: 'ProjectNameExample'
       },
       {
         type: 'input',
         name: 'projectUrl',
-        message: '(2/6) Do you have already a project URL?',
+        message: '(2/9) Do you have already a project URL?',
         required: 'false',
         default: 'http://example.com'
       },
       {
         type: 'input',
         name: 'projectDescription',
-        message: '(3/6) What is the project description?',
+        message: '(3/9) What is the project description?',
         required: 'false'
       },
       {
         type: 'input',
         name: 'projectRepo',
-        message: '(4/6) What is the project repository url?',
+        message: '(4/9) What is the project repository url?',
         required: 'false'
       },
       {
         type: 'input',
         name: 'authorName',
-        message: '(5/6) What is your name?',
+        message: '(5/9) What is your name?',
         required: 'false'
       },
       {
         type: 'input',
         name: 'authorEmail',
-        message: '(6/6) What is your email?',
+        message: '(6/9) What is your email?',
         required: 'false'
       },
       {
         type: 'input',
         name: 'authorUrl',
-        message: '(7/6) What is your website url?',
+        message: '(7/9) What is your website url?',
         required: 'false'
       },
       {
         type: 'list',
         name: 'css',
-        message: '(8/10) What stylesheets do you want to use?',
+        message: '(8/9) What stylesheets do you want to use?',
         choices: [
           {
             name: 'CSS',
@@ -88,7 +88,7 @@ module.exports = class extends Generator {
       {
         type: 'list',
         name: 'license',
-        message: '(9/10) What license do you want to use?',
+        message: '(9/9) What license do you want to use?',
         choices: [
           {
             name: 'Apache License 2.0',
