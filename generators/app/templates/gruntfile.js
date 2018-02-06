@@ -30,6 +30,7 @@ module.exports = function(grunt) {
                 }]
             }
         },
+    <% if (includeSass || includeScss) { -%>
     sass: {
             server: {
                 files: [{
@@ -50,6 +51,7 @@ module.exports = function(grunt) {
                 }]
             }
         },
+    <% } -%>
     uglify: {
       options: {
         preserveComments: false
@@ -93,10 +95,14 @@ module.exports = function(grunt) {
   });
 
   // Default task(s).
+  <% if (includeSass || includeScss) { -%>
   grunt.registerTask('serve', ['sass:server', 'watch:sass']);
+  <% } -%>
 
   grunt.registerTask('build', [
+    <% if (includeSass || includeScss) { -%>
     'sass:dist',
+    <% } -%>
     'imagemin:dist',
     'uglify:dist',
     'postcss:dist',
@@ -105,6 +111,12 @@ module.exports = function(grunt) {
 
   grunt.registerTask('clear', ['clean:clear']);
 
+  <% if (includeSass || includeScss) { -%>
   grunt.registerTask('default', ['serve']);
+  <% } -%>
+
+  <% if (includeCss) { -%>
+  grunt.registerTask('default', ['build']);
+  <% } -%>
 
 };

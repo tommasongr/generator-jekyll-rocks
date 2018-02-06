@@ -7,23 +7,29 @@
     "email": "<%= authorEmail %>",
     "url": "<%= authorUrl %>"
   },
-  "repository": {
-    "type": "git",
-    "url": ""
-  },
+<% if (includeApache) { -%>
+  "license": "Apache License 2.0",
+<% } -%>
+<% if (includeGnu) { -%>
+  "license": "GNU General Public License V3",
+<% } -%>
+<% if (includeMit) { -%>
+  "license": "MIT License",
+<% } -%>
   "scripts": {
     "serve": "grunt serve",
     "build": "grunt build",
     "clear": "grunt clear"
   },
-  "license": "",
   "devDependencies": {
     "grunt": "^1.0.1",
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-imagemin": "^2.0.1",
     "grunt-contrib-jshint": "~1.1.0",
     "grunt-contrib-nodeunit": "~1.0.0",
+<% if (includeSass || includeScss) { -%>
     "grunt-contrib-sass": "^1.0.0",
+<% } -%>
     "grunt-contrib-uglify": "~3.3.0",
     "grunt-contrib-watch": "^1.0.0",
     "grunt-postcss": "^0.9.0",
@@ -34,5 +40,9 @@
     "autoprefixer": "^7.2.4",
     "cssnano": "^3.10.0",
     "pixrem": "^4.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "<%= projectRepo %>"
   }
 }
