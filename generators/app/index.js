@@ -136,44 +136,60 @@ module.exports = class extends Generator {
   writing() {
     this.log('Scaffolding...');
 
-    this.fs.copy(this.templatePath('_data'), this.destinationPath('_data'));
+    this.fs.copy(this.templatePath('app/_data'), this.destinationPath('app/_data'));
 
-    this.fs.copyTpl(this.templatePath('_includes'), this.destinationPath('_includes'), {
-      authorName: this.authorName
-    });
+    this.fs.copyTpl(
+      this.templatePath('app/_includes'),
+      this.destinationPath('app/_includes'),
+      {
+        authorName: this.authorName
+      }
+    );
 
-    this.fs.copy(this.templatePath('_layouts'), this.destinationPath('_layouts'));
+    this.fs.copy(this.templatePath('app/_layouts'), this.destinationPath('app/_layouts'));
 
-    this.fs.copy(this.templatePath('assets'), this.destinationPath('assets'));
+    this.fs.copy(this.templatePath('app/assets'), this.destinationPath('app/assets'));
 
     if (this.includeCss) {
-      this.fs.copy(this.templatePath('style/css'), this.destinationPath('assets/css'));
+      this.fs.copy(
+        this.templatePath('app/_style/css'),
+        this.destinationPath('app/assets/css')
+      );
     }
 
     if (this.includeSass) {
-      this.fs.copy(this.templatePath('style/sass'), this.destinationPath('assets/css'));
+      this.fs.copy(
+        this.templatePath('app/_style/sass'),
+        this.destinationPath('app/assets/css')
+      );
     }
 
     if (this.includeScss) {
-      this.fs.copy(this.templatePath('style/scss'), this.destinationPath('assets/css'));
+      this.fs.copy(
+        this.templatePath('app/_style/scss'),
+        this.destinationPath('app/assets/css')
+      );
     }
 
     if (this.includeApache) {
       this.fs.copy(
-        this.templatePath('license/Apache License 2.0'),
+        this.templatePath('app/_license/Apache License 2.0'),
         this.destinationPath('LICENSE')
       );
     }
 
     if (this.includeGnu) {
       this.fs.copy(
-        this.templatePath('license/GNU General Public License V3'),
+        this.templatePath('app/_license/GNU General Public License V3'),
         this.destinationPath('LICENSE')
       );
     }
 
     if (this.includeMit) {
-      this.fs.copy(this.templatePath('license/MIT'), this.destinationPath('LICENSE'));
+      this.fs.copy(
+        this.templatePath('app/_license/MIT'),
+        this.destinationPath('LICENSE')
+      );
     }
 
     this.fs.copyTpl(
@@ -182,37 +198,48 @@ module.exports = class extends Generator {
       {
         projectName: this.projectName,
         projectUrl: this.projectUrl,
-        projectDescription: this.projectDescription
+        authorEmail: this.authorEmail
       }
     );
 
+    this.fs.copy(this.templatePath('.ftppass'), this.destinationPath('.ftppass'));
+
     this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'));
 
-    this.fs.copy(this.templatePath('.htaccess'), this.destinationPath('.htaccess'));
+    this.fs.copy(
+      this.templatePath('app/.htaccess'),
+      this.destinationPath('app/.htaccess')
+    );
 
     this.fs.copy(this.templatePath('Gemfile'), this.destinationPath('Gemfile'));
 
-    this.fs.copyTpl(
+    this.fs.copy(
       this.templatePath('gruntfile.js'),
       this.destinationPath('gruntfile.js'),
       {
         includeSass: this.includeSass,
-        includeScss: this.includeScss,
-        includeCss: this.includeCss
+        includeScss: this.includeScss
       }
     );
 
-    this.fs.copyTpl(this.templatePath('humans.txt'), this.destinationPath('humans.txt'), {
-      authorName: this.authorName,
-      authorUrl: this.authorUrl,
-      authorEmail: this.authorEmail
-    });
+    this.fs.copyTpl(
+      this.templatePath('app/humans.txt'),
+      this.destinationPath('app/humans.txt'),
+      {
+        authorName: this.authorName,
+        authorUrl: this.authorUrl,
+        authorEmail: this.authorEmail
+      }
+    );
 
-    this.fs.copy(this.templatePath('index.html'), this.destinationPath('index.html'));
+    this.fs.copy(
+      this.templatePath('app/index.html'),
+      this.destinationPath('app/index.html')
+    );
 
     this.fs.copyTpl(
-      this.templatePath('manifest.json'),
-      this.destinationPath('manifest.json'),
+      this.templatePath('app/manifest.json'),
+      this.destinationPath('app/manifest.json'),
       { projectName: this.projectName }
     );
 
@@ -240,7 +267,10 @@ module.exports = class extends Generator {
       projectDescription: this.projectDescription
     });
 
-    this.fs.copy(this.templatePath('robots.txt'), this.destinationPath('robots.txt'));
+    this.fs.copy(
+      this.templatePath('app/robots.txt'),
+      this.destinationPath('app/robots.txt')
+    );
   }
 
   install() {

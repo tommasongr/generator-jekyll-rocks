@@ -1,122 +1,205 @@
-module.exports = function(grunt) {
-  // Load All Grunt tasks
-  require('jit-grunt')(grunt);
+'use strict';
 
-  // Project configuration.
-  grunt.initConfig({
-    pkg: grunt.file.readJSON('package.json'),
-    clean: {
-      clear: {
-        files: [{
-          src: [
-            '.sass-cache',
-            'assets/css/*.min.css',
-            'assets/css/*.css.map',
-            'assets/js/*.min.js'
-          ]
-        }]
-      }
-    },
-    imagemin: {
+module.exports = function (grunt) {
+
+    require('time-grunt')(grunt);
+    require('load-grunt-tasks')(grunt);
+
+    grunt.initConfig({
+        pkg: grunt.file.readJSON('package.json'),
+        app: {
+          source: 'app',
+          dist: 'dist',
+          baseurl: ''
+        },
+
+        shell: {
+          jekyllClean: {
+            command: 'jekyll clean'
+          }
+        },
+        jekyll: {
+          options: {
+            config: '_config.yml',
+            src: '<%= app.source %>'
+          },
+          dist: {
             options: {
-                progressive: true
-            },
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: '/assets/img',
-                    src: '**/*.{jpg,jpeg,png,gif}',
-                    dest: '/assets/img'
-                }]
+                dest: '<%= app.dist %>/<%= app.baseurl %>',
             }
-        },
-    <% if (includeSass || includeScss) { -%>
-    sass: {
-            server: {
-                files: [{
-                    expand: true,
-                    cwd: 'assets/css',
-                    src: '**/*.{scss,sass}',
-                    dest: 'assets/css',
-                    ext: '.css'
-                }]
-            },
-            dist: {
-                files: [{
-                    expand: true,
-                    cwd: 'assets/css',
-                    src: '**/*.{scss,sass}',
-                    dest: 'assets/css',
-                    ext: '.css'
-                }]
+          },
+          server: {
+            options: {
+                config: '_config.yml',
+                dest: '.jekyll/<%= app.baseurl %>'
             }
+          }
         },
-    <% } -%>
-    uglify: {
-      options: {
-        preserveComments: false
-      },
-      dist: {
-        src: 'assets/js/*.js',
-        dest: 'assets/js/functions.min.js'
-      }
-    },
-    watch: {
-      sass: {
-        files: ['assets/css/**/*.{scss,sass}'],
-        tasks: ['sass:server']
-      }
-    },
-    postcss: {
-      options: {
-        map: false,
-
-        processors: [
-          require('pixrem')(), // add fallbacks for rem units
-          require('autoprefixer')({browsers: 'last 3 versions'}), // add vendor prefixes
-          require('cssnano')() // minify the result
-        ]
-      },
-      dist: {
-        src: 'assets/css/*.css',
-        dest: 'assets/css/main.min.css'
-      }
-    },
-    svgmin: {
-      dist: {
-          files: [{
+        watch: {
+          options: {
+            livereload: '<%= connect.options.livereload %>'
+          },
+          files: [
+            '<%= app.source %>/**/*'
+          ],
+          tasks: ['sass:server','uglify:dist','postcss:dist','jekyll:server']
+        },
+        connect: {
+          options: {
+            port: 9000,
+            livereload: 9090,
+            hostname: 'localhost' // set to '0.0.0.0' to access from outside
+          },
+          livereload: {
+            options: {
+              open: true,
+              base: ['.jekyll']
+            }
+          }
+        },
+        clean: {
+          server: [
+            '.jekyll',
+            '.tmp'
+          ],
+          clear: {
+            files: [{
+              src: [
+                '.jekyll',
+                '.tmp',
+                '.sass-cache',
+                'dist',
+                '<%= app.source %>/assets/css/*.min.css',
+                '<%= app.source %>/assets/css/*.css.map',
+                '<%= app.source %>/assets/js/*.min.js'
+              ]
+            }]
+          }
+        },
+        imagemin: {
+          options: {
+            progressive: true
+          },
+          dist: {
+            files: [{
+                expand: true,
+                cwd: '<%= app.dist %>/assets/img',
+                src: '**/*.{jpg,jpeg,png,gif}',
+                dest: '<%= app.dist %>/assets/img'
+            }]
+          }
+        },
+        sass: {
+          server: {
+            files: [{
               expand: true,
-              cwd: 'assets/img',
-              src: '**/*.svg',
-              dest: 'assets/img'
-          }]
-      }
-    }
-  });
+              cwd: '<%= app.source %>/assets/css',
+              src: '**/*.{scss,sass}',
+              dest: '<%= app.source %>/assets/css',
+              ext: '.css'
+            }]
+          },
+          dist: {
+            files: [{
+              expand: true,
+              cwd: '<%= app.source %>/assets/css',
+              src: '**/*.{scss,sass}',
+              dest: '<%= app.source %>/assets/css',
+              ext: '.css'
+            }]
+          }
+        },
+        uglify: {
+          options: {
+            preserveComments: false
+          },
+          dist: {
+            src: '<%= app.source %>/assets/js/*.js',
+            dest: '<%= app.source %>/assets/js/functions.min.js'
+          }
+        },
+        postcss: {
+          options: {
+            map: false,
 
-  // Default task(s).
-  <% if (includeSass || includeScss) { -%>
-  grunt.registerTask('serve', ['sass:server', 'watch:sass']);
-  <% } -%>
+            processors: [
+              require('pixrem')(), // add fallbacks for rem units
+              require('autoprefixer')({browsers: 'last 3 versions'}), // add vendor prefixes
+              require('cssnano')() // minify the result
+            ]
+          },
+          dist: {
+            src: '<%= app.source %>/assets/css/*.css',
+            dest: '<%= app.source %>/assets/css/main.min.css'
+          }
+        },
+        svgmin: {
+          dist: {
+              files: [{
+                  expand: true,
+                  cwd: '<%= app.source %>/assets/img',
+                  src: '**/*.svg',
+                  dest: '<%= app.source %>/assets/img'
+              }]
+          }
+        },
+        buildcontrol: {
+          dist: {
+            options: {
+              dir: './',
+              remote: 'git@gitlab.com:tommaso.negri/provaaa.git',
+              branch: 'master',
+              commit: true,
+              push: true,
+              message: "Built %sourceName% from commit %sourceCommit% on branch %sourceBranch%",
+              connectCommits: false
+            }
+          }
+        },
+        'ftp_upload': {
+          build: {
+            auth: {
+              host: 'atosa-italy.it',
+              port: 21,
+              authKey: 'key1'
+            },
+            src: '<%= app.dist %>/*',
+            dest: '/public_html/provaftp'
+          }
+        }
 
-  grunt.registerTask('build', [
-    <% if (includeSass || includeScss) { -%>
-    'sass:dist',
-    <% } -%>
-    'imagemin:dist',
-    'uglify:dist',
-    'postcss:dist',
-    'svgmin:dist'
-  ]);
+    });
 
-  grunt.registerTask('clear', ['clean:clear']);
+    grunt.registerTask('serve', [
+      'clean:server',
+      'sass:server',
+      'uglify:dist',
+      'postcss:dist',
+      'jekyll:server',
+      'connect',
+      'watch'
+    ]);
 
-  <% if (includeSass || includeScss) { -%>
-  grunt.registerTask('default', ['serve']);
-  <% } -%>
+    grunt.registerTask('build', [
+      'clean',
+      'sass:dist',
+      'uglify:dist',
+      'postcss:dist',
+      'imagemin:dist',
+      'svgmin:dist',
+      'jekyll:dist'
+    ]);
 
-  <% if (includeCss) { -%>
-  grunt.registerTask('default', ['build']);
-  <% } -%>
+    grunt.registerTask('deploy', [
+      // 'buildcontrol:dist'
+      'ftp_upload'
+    ]);
+
+    grunt.registerTask('clear', [
+      'shell:jekyllClean',
+      'clean:clear'
+    ]);
+
+    grunt.registerTask('default', 'serve');
 
 };
