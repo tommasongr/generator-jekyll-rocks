@@ -1,0 +1,43 @@
+{
+  "name": "<%= projectName %>",
+  "authors": [
+    "<%= authorName %> <%= authorEmail %>"
+  ],
+  "description": "<%= projectDescription %>",
+  "main": "",
+<% if (includeApache) { -%>
+  "license": "Apache-2.0",
+<% } -%>
+<% if (includeGnu) { -%>
+  "license": "GPL-3.0-only",
+<% } -%>
+<% if (includeMit) { -%>
+  "license": "MIT",
+<% } -%>
+  "homepage": "<%= projectUrl %>",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+<% if (includeBootstrap) { -%>
+    "bootstrap": "^4.0.0"
+<% } -%>
+<% if (includeFoundation) { -%>
+    "foundation": "^5.5.3"
+<% } -%>
+<% if (includeSemanticUi) { -%>
+    "semantic": "^2.2.14"
+<% } -%>
+<% if (includeMaterialDesignLite) { -%>
+    "material-design-lite": "^1.3.0"
+<% } -%>
+<% if (includeMaterialize) { -%>
+    "materialize": "^0.100.2"
+<% } -%>
+  }
+}

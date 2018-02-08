@@ -19,13 +19,20 @@
   "scripts": {
     "serve": "grunt serve",
     "build": "grunt build",
-    "clear": "grunt clear"
+    "clear": "grunt clear",
+    "push": "grunt push",
+    "deploy": "grunt deploy",
+    "setup": "grunt setup"
   },
   "devDependencies": {
+    "bower": "^1.8.2",
     "grunt": "^1.0.1",
+<% if (includeBuildControll) { -%>
     "grunt-build-control": "^0.7.1",
+<% } -%>
     "grunt-contrib-clean": "^1.1.0",
     "grunt-contrib-connect": "^1.0.2",
+    "grunt-contrib-copy": "^1.0.0",
     "grunt-contrib-imagemin": "^2.0.1",
     "grunt-contrib-jshint": "^1.1.0",
     "grunt-contrib-nodeunit": "^1.0.0",
@@ -34,12 +41,14 @@
 <% } -%>
     "grunt-contrib-uglify": "^3.3.0",
     "grunt-contrib-watch": "^1.0.0",
+<% if (includeFtp) { -%>
     "grunt-ftp-upload": "^0.1.1",
+<% } -%>
     "grunt-jekyll": "^0.4.7",
     "grunt-postcss": "^0.9.0",
     "grunt-shell": "^2.1.0",
     "grunt-svgmin": "^5.0.0",
-    "load-grunt-tasks": "^3.5.2",
+    "jit-grunt": "^0.10.0",
     "time-grunt": "^1.4.0"
   },
   "dependencies": {

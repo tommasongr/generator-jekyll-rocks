@@ -40,3 +40,5 @@ exclude:
   - package.json
   - LICENSE
   - README.md
+  - bower.json
+  - .ftppass

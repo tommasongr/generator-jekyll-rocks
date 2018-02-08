@@ -44,6 +44,23 @@
   <link rel="apple-touch-icon" sizes="152x152" href="">
 
   <!-- Style Sheets -->
+<% if (includeBootstrap) { -%>
+  <link type="text/css" rel="stylesheet" href="/assets/bower_components/bootstrap-4/bootstrap.min.css">
+<% } -%>
+<% if (includeFoundation) { -%>
+  <link type="text/css" rel="stylesheet" href="/assets/bower_components/foundation-6/foundation.min.css">
+<% } -%>
+<% if (includeSemanticUi) { -%>
+  <link type="text/css" rel="stylesheet" href="/assets/bower_components/semantic-ui/semantic.min.css">
+<% } -%>
+<% if (includeMaterialDesignLite) { -%>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="/assets/bower_components/material-DL/material.min.css">
+<% } -%>
+<% if (includeMaterialize) { -%>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="/assets/bower_components/materialize-css/materialize.min.css"  media="screen,projection"/>
+<% } -%>
   <link rel="stylesheet" href="/assets/css/main.min.css">
 
   <!-- 404 Page Redirect -->

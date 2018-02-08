@@ -1,6 +1,6 @@
 {
   "key1": {
-    "username": "lucamarini@atosa-italy.it",
-    "password": "LucaaMarini#1"
+    "username": "<%= ftpUsername %>",
+    "password": "<%= ftpPassword %>"
   }
 }
