@@ -1,16 +1,35 @@
 {
   "name": "generator-jekyll-rocks",
-  "version": "1.0.0",
-  "description": "",
-  "homepage": "",
+  "version": "0.1.0",
+  "description":
+    "Boost your Jekyll workflow with Grunt! Comes with cool features as livereload, sass, uglify, postcss and Git and FTP deploy. You can choose also your favourite front end framework and everything is automatic!",
+  "homepage": "https://github.com/tommaso-negri/generator-jekyll-rocks",
   "author": {
     "name": "Tommaso Negri",
     "email": "tommaso.negri98@gmail.com",
-    "url": ""
+    "url": "https://github.com/tommaso-negri"
   },
   "files": ["generators"],
   "main": "generators/index.js",
-  "keywords": ["", "yeoman-generator"],
+  "keywords": [
+    "yeoman-generator",
+    "scaffold",
+    "generator",
+    "framework",
+    "grunt",
+    "bower",
+    "jekyll",
+    "livereload",
+    "sass",
+    "git",
+    "ftp",
+    "rocks",
+    "bootstrap",
+    "foundation",
+    "semantic",
+    "material-design-lite",
+    "materialize"
+  ],
   "devDependencies": {
     "yeoman-test": "^1.7.0",
     "yeoman-assert": "^3.1.0",
@@ -26,8 +45,9 @@
     "jest-cli": "^21.0.0"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.1",
     "chalk": "^2.1.0",
+    "user": "0.0.0",
+    "yeoman-generator": "^2.0.1",
     "yosay": "^2.0.1"
   },
   "jest": {
@@ -60,6 +80,6 @@
     },
     "plugins": ["prettier"]
   },
-  "repository": "git@gitlab.com:tommaso.negri/generator-jekyll-rocks.git",
+  "repository": "tommaso-negri/generator-jekyll-rocks.git",
   "license": "MIT"
 }

@@ -191,7 +191,7 @@ module.exports = function (grunt) {
 <% if (includeBranchGhPages) { -%>
           ghpages: {
             options: {
-              dir: 'dist/',
+              dir: '<%= appDist %>/',
               remote: '<%= projectRepo %>',
               branch: 'gh-pages',
               commit: true,

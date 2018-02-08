@@ -13,9 +13,9 @@ module.exports = class extends Generator {
     this.option('babel'); // This method adds support for a `--babel` flag
 
     this.on('end', function() {
-      console.log('Running the Grunt task now ...');
+      console.log('Running the Grunt task now...');
       this.spawnCommand('grunt', ['setup']).on('close', function() {
-        console.log('The Grunt task has completed.');
+        console.log('The Grunt task has completed');
       });
     });
   }
@@ -43,9 +43,8 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'projectUrl',
-        message: '(2/11) Do you have already a project URL?',
-        required: false,
-        default: 'http://example.com'
+        message: '(2/11) Do you have already a project url?',
+        required: false
       },
       {
         type: 'input',
@@ -138,7 +137,7 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'buildControll',
-        message: '(9/11) Do you want to use Build Controll for the Git repo?',
+        message: '(9/11) Do you want to use build controll for the Git repo?',
         required: false
       },
       {
@@ -174,13 +173,13 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'ftpUpload',
-        message: '(10/11) Do you want to use FTP Upload on this project?',
+        message: '(10/11) Do you want to use ftp upload on this project?',
         required: false
       },
       {
         type: 'input',
         name: 'ftpHost',
-        message: '(10.1/11) What is your FTP host?',
+        message: '(10.1/11) What is your ftp host?',
         required: true,
         when: function(answers) {
           return answers.ftpUpload === true;
@@ -189,7 +188,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpPort',
-        message: '(10.2/11) What is your FTP port?',
+        message: '(10.2/11) What is your ftp port?',
         required: true,
         default: 21,
         when: function(answers) {
@@ -210,7 +209,7 @@ module.exports = class extends Generator {
         type: 'confirm',
         name: 'ftpKey',
         message:
-          '(10.4/11) Do you want to store your FTP credential inside the project? NOTICE: this could be dangerous if you use a public git repository, the storage file (.ftppass) will be available to everyone',
+          '(10.4/11) Do you want to store your ftp credentials inside the project? NOTICE: this could be dangerous if you use a public git repository, the storage file (.ftppass) will be available to everyone',
         required: false,
         when: function(answers) {
           return answers.ftpUpload === true;
@@ -219,7 +218,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpUsername',
-        message: '(10.5/11) What is your FTP username?',
+        message: '(10.5/11) What is your ftp username?',
         required: false,
         when: function(answers) {
           return answers.ftpKey === true;
@@ -228,7 +227,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpPassword',
-        message: '(10.6/11) What is your FTP password',
+        message: '(10.6/11) What is your ftp password?',
         required: false,
         mask: '*',
         when: function(answers) {
