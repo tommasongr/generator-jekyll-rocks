@@ -7,8 +7,8 @@
 To install this project, you'll need the following things installed on your machine.
 
 1. [RubyGems](https://rubygems.org/pages/download) - follow the guide.
-1. [Jekyll](http://jekyllrb.com/) - `$ gem install jekyll bundler`
-2. [NodeJS](http://nodejs.org) - use the installer.
+2. [Jekyll](http://jekyllrb.com/) - `$ gem install jekyll bundler`
+3. [NodeJS](http://nodejs.org) - use the installer.
 
 ## Getting Started
 
