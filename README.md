@@ -105,4 +105,4 @@ $ grunt deploy
 
 ## License
 
-MIT © [Tommaso Negri](https://gitlab.com/tommaso.negri)
+MIT © [Tommaso Negri](https://github.com/tommaso-negri)
