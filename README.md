@@ -27,12 +27,20 @@ The Generator comes with cool featuresas livereload, sass, uglify, postcss and G
 
 To install this project, you'll need the following things installed on your machine.
 
-1. [Jekyll](http://jekyllrb.com/) - `$ gem install jekyll -v 3.6.2`
+1. [RubyGems](https://rubygems.org/pages/download) - follow the guide.
+1. [Jekyll](http://jekyllrb.com/) - `$ gem install jekyll bundler`
 2. [NodeJS](http://nodejs.org) - use the installer.
 
 ## Getting Started
 
-First, install [Yeoman](http://yeoman.io) and generator-jekyll-rocks using [npm](https://www.npmjs.com/).
+First, install [Grunt](https://gruntjs.com) and [Bower](https://bower.io) using [npm](https://www.npmjs.com/).
+
+```shell
+$ npm install -g grunt-cli
+$ npm install -g bower
+```
+
+Second, install [Yeoman](http://yeoman.io) and generator-jekyll-rocks.
 
 ```shell
 $ npm install -g yo
