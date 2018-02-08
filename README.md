@@ -1,6 +1,6 @@
 # Generator Jekyll Rocks
 
-[![npm](https://img.shields.io/npm/v/generator-jekyll-rocks.svg)](https://www.npmjs.com/package/generator-jekyll-rocks) [![![license](https://img.shields.io/github/license/tommaso-negri/generator-jekyll-rocks.svg)](https://github.com/tommaso-negri/generator-jekyll-rocks/) [![GitHub last commit](https://img.shields.io/github/last-commit/tommaso-negri/generator-jekyll-rocks.svg)](https://github.com/tommaso-negri/generator-jekyll-rocks/)
+[![npm](https://img.shields.io/npm/v/generator-jekyll-rocks.svg)](https://www.npmjs.com/package/generator-jekyll-rocks) [![license](https://img.shields.io/github/license/tommaso-negri/generator-jekyll-rocks.svg)](https://github.com/tommaso-negri/generator-jekyll-rocks/) [![GitHub last commit](https://img.shields.io/github/last-commit/tommaso-negri/generator-jekyll-rocks.svg)](https://github.com/tommaso-negri/generator-jekyll-rocks/) [![GitHub issues](https://img.shields.io/github/issues/tommaso-negri/generator-jekyll-rocks.svg)](https://github.com/tommaso-negri/generator-jekyll-rocks/issues) [![npm](https://img.shields.io/npm/dt/generator-jekyll-rocks.svg)](https://www.npmjs.com/package/generator-jekyll-rocks)
 
 **Boost your Jekyll workflow with Grunt!**
 
