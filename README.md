@@ -1,8 +1,5 @@
 # generator-jekyll-rocks
 
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=102)](https://github.com/ellerbrock/open-source-badge/)
-[![NPM version](https://badge.fury.io/js/badge-list.svg)](http://badge.fury.io/js/badge-list)
-
 > Boost your Jekyll workflow with Grunt! Comes with cool features as livereload, sass, uglify, postcss and Git and FTP deploy. You can choose also your favourite front end framework and everything is automatic!
 
 ## Prerequisites
