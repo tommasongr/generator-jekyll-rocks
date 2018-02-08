@@ -1,6 +1,6 @@
 # Generator Jekyll Rocks
 
-[![npm](https://img.shields.io/npm/v/npm.svg)](https://www.npmjs.com/package/generator-jekyll-rocks) [![license](https://img.shields.io/github/license/mashape/apistatus.svg)](https://github.com/tommaso-negri/generator-jekyll-rocks) [![Github file size](https://img.shields.io/github/size/webcaetano/craft/build/phaser-craft.min.js.svg)](https://github.com/tommaso-negri/generator-jekyll-rocks/) [![GitHub last commit](https://img.shields.io/github/last-commit/google/skia.svg)](https://github.com/tommaso-negri/generator-jekyll-rocks/)
+[![npm](https://img.shields.io/npm/v/generator-jekyll-rocks.svg)](https://www.npmjs.com/package/generator-jekyll-rocks) [![![license](https://img.shields.io/github/license/tommaso-negri/generator-jekyll-rocks.svg)](https://github.com/tommaso-negri/generator-jekyll-rocks/) [![GitHub last commit](https://img.shields.io/github/last-commit/tommaso-negri/generator-jekyll-rocks.svg)](https://github.com/tommaso-negri/generator-jekyll-rocks/)
 
 **Boost your Jekyll workflow with Grunt!**
 
