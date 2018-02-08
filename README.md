@@ -14,14 +14,14 @@ To install this project, you'll need the following things installed on your mach
 First, install [Yeoman](http://yeoman.io) and generator-jekyll-rocks using [npm](https://www.npmjs.com/).
 
 ```shell
-npm install -g yo
-npm install -g generator-jekyll-rocks
+$ npm install -g yo
+$ npm install -g generator-jekyll-rocks
 ```
 
 Then generate your new project:
 
 ```shell
-yo jekyll-rocks
+$ yo jekyll-rocks
 ```
 
 **Development mode**
