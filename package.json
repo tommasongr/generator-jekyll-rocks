@@ -1,13 +1,13 @@
 {
   "name": "generator-jekyll-rocks",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description":
     "Boost your Jekyll workflow with Grunt! Comes with cool features as livereload, sass, uglify, postcss and Git or FTP deploy. You can choose also your favourite front end framework and everything is automatic!",
-  "homepage": "https://github.com/tommaso-negri/generator-jekyll-rocks",
+  "homepage": "https://gitlab.com/tommaso.negri/generator-jekyll-rocks",
   "author": {
     "name": "Tommaso Negri",
     "email": "tommaso.negri98@gmail.com",
-    "url": "https://github.com/tommaso-negri"
+    "url": "https://gitlab.com/tommaso.negri"
   },
   "files": ["generators"],
   "main": "generators/index.js",
@@ -80,6 +80,6 @@
     },
     "plugins": ["prettier"]
   },
-  "repository": "tommaso-negri/generator-jekyll-rocks.git",
+  "repository": "tommaso.negri/generator-jekyll-rocks.git",
   "license": "MIT"
 }

@@ -1,7 +1,5 @@
 # <%= projectName %>
 
-[![license][license-image]][license-url][![Dependency Status]
-
 > <%= projectDescription %>
 
 ## Prerequisites

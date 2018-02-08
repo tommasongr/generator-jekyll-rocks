@@ -1,7 +1,26 @@
 # Generator Jekyll Rocks
 [![npm version](https://badge.fury.io/js/generator-jekyll-rocks.svg)](https://badge.fury.io/js/generator-jekyll-rocks)
 
-> Boost your Jekyll workflow with Grunt! Comes with cool features as livereload, sass, uglify, postcss and Git or FTP deploy. You can choose also your favourite front end framework and everything is automatic!
+**Boost your Jekyll workflow with Grunt!**
+
+Jekyll Rocks Generator uses the [Yeoman](http://yeoman.io) technology to scaffold a basic [Jekyll](http://jekyllrb.com/) environment that in union with [Grunt](https://gruntjs.com) makes the perfect development workflow.
+
+The Generator comes with cool featuresas livereload, sass, uglify, postcss and Git or FTP deploy. You could choose also to use a front end framework. At this time are available [Bootstrap 4](http://getbootstrap.com), [Foundation 6](https://foundation.zurb.com), [Semantic UI](https://semantic-ui.com), [Material Design Lite](https://getmdl.io) or [Materialize](http://materializecss.com). But you can obviously install whatever you want in a second time.
+
+
+## Features
+
+**During setup you can choose:**
+
+- [Sass](http://sass-lang.com/), Scss or vanilla CSS
+- A framework between: [Bootstrap 4](http://getbootstrap.com), [Foundation 6](https://foundation.zurb.com), [Semantic UI](https://semantic-ui.com), [Material Design Lite](https://getmdl.io) or [Materialize](http://materializecss.com)
+- Automatic push of your code on branch master
+- Automatic deploy of your site on gh-pages, ftp or both
+
+**Jekyll-Rocks always includes:**
+
+- Automatic Jekyll and preprocessor compiling
+- An automatic build process that includes concatenation, image and svg optimization, CSS minification and JS uglification
 
 ## Prerequisites
 
@@ -10,7 +29,7 @@ To install this project, you'll need the following things installed on your mach
 1. [Jekyll](http://jekyllrb.com/) - `$ gem install jekyll -v 3.6.2`
 2. [NodeJS](http://nodejs.org) - use the installer.
 
-## Installation
+## Getting Started
 
 First, install [Yeoman](http://yeoman.io) and generator-jekyll-rocks using [npm](https://www.npmjs.com/).
 
@@ -24,6 +43,8 @@ Then generate your new project:
 ```shell
 $ yo jekyll-rocks
 ```
+
+## Grunt Workflow
 
 **Development mode**
 
@@ -84,4 +105,4 @@ $ grunt deploy
 
 ## License
 
-MIT © [Tommaso Negri](https://github.com/tommaso-negri)
+MIT © [Tommaso Negri](https://gitlab.com/tommaso.negri)
