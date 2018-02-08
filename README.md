@@ -1,6 +1,6 @@
-# generator-jekyll-rocks
+# Generator Jekyll Rocks
 
-> Boost your Jekyll workflow with Grunt! Comes with cool features as livereload, sass, uglify, postcss and Git and FTP deploy. You can choose also your favourite front end framework and everything is automatic!
+> Boost your Jekyll workflow with Grunt! Comes with cool features as livereload, sass, uglify, postcss and Git or FTP deploy. You can choose also your favourite front end framework and everything is automatic!
 
 ## Prerequisites
 
@@ -13,14 +13,14 @@ To install this project, you'll need the following things installed on your mach
 
 First, install [Yeoman](http://yeoman.io) and generator-jekyll-rocks using [npm](https://www.npmjs.com/).
 
-```bash
+```shell
 npm install -g yo
 npm install -g generator-jekyll-rocks
 ```
 
 Then generate your new project:
 
-```bash
+```shell
 yo jekyll-rocks
 ```
 
