@@ -396,7 +396,7 @@ module.exports = class extends Generator {
       });
     }
 
-    this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'));
+    this.fs.copy(this.templatePath('gitignore'), this.destinationPath('.gitignore'));
 
     if (this.includeFramework == true) {
       this.fs.copyTpl(
