@@ -1,5 +1,4 @@
 # Generator Jekyll Rocks
-[![npm version](https://badge.fury.io/js/generator-jekyll-rocks.svg)](https://badge.fury.io/js/generator-jekyll-rocks)
 
 **Boost your Jekyll workflow with Grunt!**
 
