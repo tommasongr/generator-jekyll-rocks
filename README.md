@@ -1,4 +1,5 @@
 # Generator Jekyll Rocks
+[![npm version](https://badge.fury.io/js/generator-jekyll-rocks.svg)](https://badge.fury.io/js/generator-jekyll-rocks)
 
 > Boost your Jekyll workflow with Grunt! Comes with cool features as livereload, sass, uglify, postcss and Git or FTP deploy. You can choose also your favourite front end framework and everything is automatic!
 
@@ -84,11 +85,3 @@ $ grunt deploy
 ## License
 
 MIT © [Tommaso Negri](https://github.com/tommaso-negri)
-
-
-[npm-image]: https://badge.fury.io/js/generator-jekyll-rocks.svg
-[npm-url]: https://npmjs.org/package/generator-jekyll-rocks
-[travis-image]: https://travis-ci.org/tommaso-negri/generator-jekyll-rocks.svg?branch=master
-[travis-url]: https://travis-ci.org/tommaso-negri/generator-jekyll-rocks
-[daviddm-image]: https://david-dm.org/tommaso-negri/generator-jekyll-rocks.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/tommaso-negri/generator-jekyll-rocks
