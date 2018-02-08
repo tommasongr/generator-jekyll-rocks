@@ -38,7 +38,7 @@ $ grunt serve
 
 **Build mode**
 
-This will build your jekyll site minimazing all your sass, css, js, img and svg.
+This will build your jekyll site minimizing all your sass, css, js, img and svg.
 
 You could find the builded site under dist/
 
