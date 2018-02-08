@@ -12,14 +12,12 @@ module.exports = class extends Generator {
     // Next, add your custom code
     this.option('babel'); // This method adds support for a `--babel` flag
 
-    this.on('end', function () {
-
+    this.on('end', function() {
       console.log('Running the Grunt task now ...');
-      this.spawnCommand('grunt', ['setup'])
-        .on('close', function () {
-          console.log('The Grunt task has completed.');
-        });
-		});
+      this.spawnCommand('grunt', ['setup']).on('close', function() {
+        console.log('The Grunt task has completed.');
+      });
+    });
   }
 
   prompting() {
@@ -99,14 +97,14 @@ module.exports = class extends Generator {
         type: 'confirm',
         name: 'frameworks',
         message: '(8/11) Do you want to use a framework?',
-        required: false,
+        required: false
       },
       {
         type: 'list',
         name: 'chooseFramework',
         message: '(8.1/11) Choose your favourite framework',
         required: false,
-        when: function(answers){
+        when: function(answers) {
           return answers.frameworks === true;
         },
         choices: [
@@ -148,7 +146,7 @@ module.exports = class extends Generator {
         name: 'projectRepo',
         message: '(9.1/11) What is the project repository url?',
         required: false,
-        when: function(answers){
+        when: function(answers) {
           return answers.buildControll === true;
         }
       },
@@ -157,7 +155,7 @@ module.exports = class extends Generator {
         name: 'gitBranch',
         message: '(9.2/11) What Branch do you like to use?',
         required: false,
-        when: function(answers){
+        when: function(answers) {
           return answers.buildControll === true;
         },
         choices: [
@@ -184,7 +182,7 @@ module.exports = class extends Generator {
         name: 'ftpHost',
         message: '(10.1/11) What is your FTP host?',
         required: true,
-        when: function(answers){
+        when: function(answers) {
           return answers.ftpUpload === true;
         }
       },
@@ -194,7 +192,7 @@ module.exports = class extends Generator {
         message: '(10.2/11) What is your FTP port?',
         required: true,
         default: 21,
-        when: function(answers){
+        when: function(answers) {
           return answers.ftpUpload === true;
         }
       },
@@ -204,16 +202,17 @@ module.exports = class extends Generator {
         message: '(10.3/11) What is the destionation path?',
         required: true,
         default: '/public_html/',
-        when: function(answers){
+        when: function(answers) {
           return answers.ftpUpload === true;
         }
       },
       {
         type: 'confirm',
         name: 'ftpKey',
-        message: '(10.4/11) Do you want to store your FTP credential inside the project? NOTICE: this could be dangerous if you use a public git repository, the storage file (.ftppass) will be available to everyone',
+        message:
+          '(10.4/11) Do you want to store your FTP credential inside the project? NOTICE: this could be dangerous if you use a public git repository, the storage file (.ftppass) will be available to everyone',
         required: false,
-        when: function(answers){
+        when: function(answers) {
           return answers.ftpUpload === true;
         }
       },
@@ -222,7 +221,7 @@ module.exports = class extends Generator {
         name: 'ftpUsername',
         message: '(10.5/11) What is your FTP username?',
         required: false,
-        when: function(answers){
+        when: function(answers) {
           return answers.ftpKey === true;
         }
       },
@@ -232,7 +231,7 @@ module.exports = class extends Generator {
         message: '(10.6/11) What is your FTP password',
         required: false,
         mask: '*',
-        when: function(answers){
+        when: function(answers) {
           return answers.ftpKey === true;
         }
       },
@@ -293,7 +292,10 @@ module.exports = class extends Generator {
         this.includeBootstrap = hasFeature(props.chooseFramework, 'bootstrap4');
         this.includeFoundation = hasFeature(props.chooseFramework, 'foundation');
         this.includeSemanticUi = hasFeature(props.chooseFramework, 'semanticUi');
-        this.includeMaterialDesignLite = hasFeature(props.chooseFramework, 'materialDesignLite');
+        this.includeMaterialDesignLite = hasFeature(
+          props.chooseFramework,
+          'materialDesignLite'
+        );
         this.includeMaterialize = hasFeature(props.chooseFramework, 'materialize');
         this.includeBranchMaster = hasFeature(props.gitBranch, 'master');
         this.includeBranchGhPages = hasFeature(props.gitBranch, 'gh-pages');
@@ -322,14 +324,17 @@ module.exports = class extends Generator {
       }
     );
 
-    this.fs.copyTpl(this.templatePath('app/_layouts'), this.destinationPath('app/_layouts'),
-    {
-      includeBootstrap: this.includeBootstrap,
-      includeFoundation: this.includeFoundation,
-      includeSemanticUi: this.includeSemanticUi,
-      includeMaterialDesignLite: this.includeMaterialDesignLite,
-      includeMaterialize: this.includeMaterialize
-    });
+    this.fs.copyTpl(
+      this.templatePath('app/_layouts'),
+      this.destinationPath('app/_layouts'),
+      {
+        includeBootstrap: this.includeBootstrap,
+        includeFoundation: this.includeFoundation,
+        includeSemanticUi: this.includeSemanticUi,
+        includeMaterialDesignLite: this.includeMaterialDesignLite,
+        includeMaterialize: this.includeMaterialize
+      }
+    );
 
     this.fs.copy(this.templatePath('app/assets'), this.destinationPath('app/assets'));
 
@@ -386,8 +391,7 @@ module.exports = class extends Generator {
     );
 
     if (this.ftpKey == true) {
-      this.fs.copyTpl(this.templatePath('.ftppass'), this.destinationPath('.ftppass'),
-      {
+      this.fs.copyTpl(this.templatePath('.ftppass'), this.destinationPath('.ftppass'), {
         ftpUsername: this.ftpUsername,
         ftpPassword: this.ftpPassword
       });
@@ -396,22 +400,25 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath('.gitignore'), this.destinationPath('.gitignore'));
 
     if (this.includeFramework == true) {
-      this.fs.copyTpl(this.templatePath('bower.json'), this.destinationPath('bower.json'),
-      {
-        projectName: this.projectName,
-        authorName: this.authorName,
-        authorEmail: this.authorEmail,
-        projectDescription: this.projectDescription,
-        includeApache: this.includeApache,
-        includeGnu: this.includeGnu,
-        includeMit: this.includeMit,
-        projectUrl: this.projectUrl,
-        includeBootstrap: this.includeBootstrap,
-        includeFoundation: this.includeFoundation,
-        includeSemanticUi: this.includeSemanticUi,
-        includeMaterialDesignLite: this.includeMaterialDesignLite,
-        includeMaterialize: this.includeMaterialize
-      });
+      this.fs.copyTpl(
+        this.templatePath('bower.json'),
+        this.destinationPath('bower.json'),
+        {
+          projectName: this.projectName,
+          authorName: this.authorName,
+          authorEmail: this.authorEmail,
+          projectDescription: this.projectDescription,
+          includeApache: this.includeApache,
+          includeGnu: this.includeGnu,
+          includeMit: this.includeMit,
+          projectUrl: this.projectUrl,
+          includeBootstrap: this.includeBootstrap,
+          includeFoundation: this.includeFoundation,
+          includeSemanticUi: this.includeSemanticUi,
+          includeMaterialDesignLite: this.includeMaterialDesignLite,
+          includeMaterialize: this.includeMaterialize
+        }
+      );
     }
 
     this.fs.copy(this.templatePath('.bowerrc'), this.destinationPath('.bowerrc'));
@@ -509,6 +516,5 @@ module.exports = class extends Generator {
     if (this.includeFramework == true) {
       this.bowerInstall();
     }
-
   }
 };
