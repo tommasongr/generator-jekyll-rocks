@@ -1,17 +1,21 @@
-language: node_js
-node_js:
-  - 0.10
+language: ruby
+rvm:
+  - 2.3.3
 
-env:
-  matrix:
-    - ruby=1.9.3
-    - ruby=2.0.0-p353
+before_install:
+  - npm install -g grunt-cli
+  - npm install -g bower
+  - npm install -g yo
+
+install: gem install jekyll bundler
 
 before_script:
-  - gem install jekyll
+  - npm link
 
 script:
   - yo jekyll-rocks
+  - grunt serve
+  - grunt build
 
 notifications:
   email: false
