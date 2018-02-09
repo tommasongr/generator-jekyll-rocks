@@ -17,6 +17,9 @@ script:
   - grunt serve
   - grunt build
 
+env:
+  - props.projectName=provaNome
+
 notifications:
   email: false
   # webhooks:
