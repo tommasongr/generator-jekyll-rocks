@@ -14,8 +14,6 @@ before_script:
 
 script:
   - yo jekyll-rocks
-  - grunt serve
-  - grunt build
 
 env:
   - props.projectName=provaNome
