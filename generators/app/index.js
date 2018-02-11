@@ -29,7 +29,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'projectName',
-        message: '(1/11) What will be your project name?',
+        message: '(1/12) What will be your project name?',
         required: true,
         default: 'myAwesomeSite',
         validate: function(value) {
@@ -43,37 +43,37 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'projectUrl',
-        message: '(2/11) Do you have already a project url?',
+        message: '(2/12) Do you have already a project url?',
         required: false
       },
       {
         type: 'input',
         name: 'projectDescription',
-        message: '(3/11) What is the project description?',
+        message: '(3/12) What is the project description?',
         required: false
       },
       {
         type: 'input',
         name: 'authorName',
-        message: '(4/11) What is your name?',
+        message: '(4/12) What is your name?',
         required: false
       },
       {
         type: 'input',
         name: 'authorEmail',
-        message: '(5/11) What is your email?',
+        message: '(5/12) What is your email?',
         required: false
       },
       {
         type: 'input',
         name: 'authorUrl',
-        message: '(6/11) What is your website url?',
+        message: '(6/12) What is your website url?',
         required: false
       },
       {
         type: 'list',
         name: 'css',
-        message: '(7/11) What stylesheets do you want to use?',
+        message: '(7/12) What stylesheets do you want to use?',
         choices: [
           {
             name: 'CSS',
@@ -95,13 +95,13 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'frameworks',
-        message: '(8/11) Do you want to use a framework?',
+        message: '(8/12) Do you want to use a framework?',
         required: false
       },
       {
         type: 'list',
         name: 'chooseFramework',
-        message: '(8.1/11) Choose your favourite framework',
+        message: '(8.1/12) Choose your favourite framework',
         required: false,
         when: function(answers) {
           return answers.frameworks === true;
@@ -136,14 +136,39 @@ module.exports = class extends Generator {
       },
       {
         type: 'confirm',
+        name: 'includeGrid',
+        message: '(9/12) Do you want to use a grid?',
+        required: false,
+        when: function(answers) {
+          return answers.frameworks === false;
+        }
+      },
+      {
+        type: 'checkbox',
+        name: 'gridChoose',
+        message: '(9/12) Which grid do you prefer?',
+        required: false,
+        when: function(answers) {
+          return answers.includeGrid === true;
+        },
+        choices: [
+          {
+            name: 'Toast Grid',
+            value: 'toastGrid',
+            checked: true
+          }
+        ]
+      },
+      {
+        type: 'confirm',
         name: 'buildControll',
-        message: '(9/11) Do you want to use build controll for the Git repo?',
+        message: '(10/12) Do you want to use build controll for the Git repo?',
         required: false
       },
       {
         type: 'input',
         name: 'projectRepo',
-        message: '(9.1/11) What is the project repository url?',
+        message: '(10.1/12) What is the project repository url?',
         required: false,
         when: function(answers) {
           return answers.buildControll === true;
@@ -152,7 +177,7 @@ module.exports = class extends Generator {
       {
         type: 'checkbox',
         name: 'gitBranch',
-        message: '(9.2/11) What Branch do you like to use?',
+        message: '(10.2/12) What Branch do you like to use?',
         required: false,
         when: function(answers) {
           return answers.buildControll === true;
@@ -161,7 +186,7 @@ module.exports = class extends Generator {
           {
             name: 'master',
             value: 'master',
-            checked: false
+            checked: true
           },
           {
             name: 'gh-pages',
@@ -173,13 +198,13 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'ftpUpload',
-        message: '(10/11) Do you want to use ftp upload on this project?',
+        message: '(11/12) Do you want to use ftp upload on this project?',
         required: false
       },
       {
         type: 'input',
         name: 'ftpHost',
-        message: '(10.1/11) What is your ftp host?',
+        message: '(11.1/12) What is your ftp host?',
         required: true,
         when: function(answers) {
           return answers.ftpUpload === true;
@@ -188,7 +213,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpPort',
-        message: '(10.2/11) What is your ftp port?',
+        message: '(11.2/12) What is your ftp port?',
         required: true,
         default: 21,
         when: function(answers) {
@@ -198,7 +223,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpDest',
-        message: '(10.3/11) What is the destionation path?',
+        message: '(11.3/12) What is the destionation path?',
         required: true,
         default: '/public_html/',
         when: function(answers) {
@@ -209,7 +234,7 @@ module.exports = class extends Generator {
         type: 'confirm',
         name: 'ftpKey',
         message:
-          '(10.4/11) Do you want to store your ftp credentials inside the project? NOTICE: this could be dangerous if you use a public git repository, the storage file (.ftppass) will be available to everyone',
+          '(11.4/12) Do you want to store your ftp credentials inside the project? NOTICE: this could be dangerous if you use a public git repository, the storage file (.ftppass) will be available to everyone',
         required: false,
         when: function(answers) {
           return answers.ftpUpload === true;
@@ -218,7 +243,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpUsername',
-        message: '(10.5/11) What is your ftp username?',
+        message: '(11.5/12) What is your ftp username?',
         required: false,
         when: function(answers) {
           return answers.ftpKey === true;
@@ -227,7 +252,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpPassword',
-        message: '(10.6/11) What is your ftp password?',
+        message: '(11.6/12) What is your ftp password?',
         required: false,
         mask: '*',
         when: function(answers) {
@@ -237,7 +262,7 @@ module.exports = class extends Generator {
       {
         type: 'list',
         name: 'license',
-        message: '(11/11) What license do you want to use?',
+        message: '(12/12) What license do you want to use?',
         choices: [
           {
             name: 'Apache License 2.0',
@@ -267,6 +292,7 @@ module.exports = class extends Generator {
         this.authorEmail = props.authorEmail;
         this.authorUrl = props.authorUrl;
         this.includeFramework = props.frameworks;
+        this.includeGrid = props.includeGrid;
         this.includeBuildControll = props.buildControll;
         this.projectRepo = props.projectRepo;
         this.includeFtp = props.ftpUpload;
@@ -296,6 +322,7 @@ module.exports = class extends Generator {
           'materialDesignLite'
         );
         this.includeMaterialize = hasFeature(props.chooseFramework, 'materialize');
+        this.includeToastGrid = hasFeature(props.gridChoose, 'toastGrid');
         this.includeBranchMaster = hasFeature(props.gitBranch, 'master');
         this.includeBranchGhPages = hasFeature(props.gitBranch, 'gh-pages');
         this.includeApache = hasFeature(props.license, 'apache');
@@ -306,6 +333,9 @@ module.exports = class extends Generator {
   }
 
   writing() {
+    if (this.includeFramework == true) {
+      this.includeGrid = false;
+    }
     this.log('Scaffolding...');
 
     this.fs.copy(this.templatePath('app/_data'), this.destinationPath('app/_data'));
@@ -319,7 +349,8 @@ module.exports = class extends Generator {
         includeFoundation: this.includeFoundation,
         includeSemanticUi: this.includeSemanticUi,
         includeMaterialDesignLite: this.includeMaterialDesignLite,
-        includeMaterialize: this.includeMaterialize
+        includeMaterialize: this.includeMaterialize,
+        includeToastGrid: this.includeToastGrid
       }
     );
 
@@ -345,16 +376,22 @@ module.exports = class extends Generator {
     }
 
     if (this.includeSass) {
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('app/_style/sass'),
-        this.destinationPath('app/assets/css')
+        this.destinationPath('app/assets/css'),
+        {
+          includeToastGrid: this.includeToastGrid
+        }
       );
     }
 
     if (this.includeScss) {
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('app/_style/scss'),
-        this.destinationPath('app/assets/css')
+        this.destinationPath('app/assets/css'),
+        {
+          includeToastGrid: this.includeToastGrid
+        }
       );
     }
 
@@ -435,6 +472,7 @@ module.exports = class extends Generator {
       {
         includeSass: this.includeSass,
         includeScss: this.includeScss,
+        includeGrid: this.includeGrid,
         includeBuildControll: this.includeBuildControll,
         projectRepo: this.projectRepo,
         includeBranchMaster: this.includeBranchMaster,
