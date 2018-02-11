@@ -3,6 +3,8 @@
 var Generator = require('yeoman-generator');
 var chalk = require('chalk');
 var yosay = require('yosay');
+var cwd = require('cwd');
+var Dir = chalk.magentaBright(cwd());
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -29,7 +31,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'projectName',
-        message: '(1/12) What will be your project name?',
+        message: chalk.reset('(1/12) What will be your project name?'),
         required: true,
         default: 'myAwesomeSite',
         validate: function(value) {
@@ -41,52 +43,91 @@ module.exports = class extends Generator {
         }
       },
       {
+        type: 'confirm',
+        name: 'directory',
+        message: chalk.reset(
+          '(1.1/12) Do you want to scaffold in this directory? Are you currently in ' +
+            Dir
+        ),
+        default: false
+      },
+      {
+        type: 'input',
+        name: 'specifyDirectory',
+        message: chalk.reset(
+          '(1.2/12) NOTICE: Your full path will become automatically (../yourProjectName). Provide a new base path for the project:'
+        ),
+        when: function(answers) {
+          return answers.directory === false;
+        }
+      },
+      {
+        type: 'input',
+        name: 'confirmDirectory',
+        message:
+          chalk.reset('(1.3/12) Type ') +
+          chalk.reset.green('YES') +
+          chalk.reset(' to confirm your new base path. Or press ') +
+          chalk.reset.red('Enter') +
+          chalk.reset(' to abort.'),
+        when: function(answers) {
+          return answers.directory === false;
+        },
+        validate: function(value) {
+          var pass = value.match('YES');
+          if (pass) {
+            return true;
+          }
+          return process.exit();
+        }
+      },
+      {
         type: 'input',
         name: 'projectUrl',
-        message: '(2/12) Do you have already a project url?',
+        message: chalk.reset('(2/12) What is your project url?'),
         required: false
       },
       {
         type: 'input',
         name: 'projectDescription',
-        message: '(3/12) What is the project description?',
+        message: chalk.reset('(3/12) What is the project description?'),
         required: false
       },
       {
         type: 'input',
         name: 'authorName',
-        message: '(4/12) What is your name?',
+        message: chalk.reset('(4/12) What is your name?'),
         required: false
       },
       {
         type: 'input',
         name: 'authorEmail',
-        message: '(5/12) What is your email?',
+        message: chalk.reset('(5/12) What is your email?'),
         required: false
       },
       {
         type: 'input',
         name: 'authorUrl',
-        message: '(6/12) What is your website url?',
+        message: chalk.reset('(6/12) What is your website url?'),
         required: false
       },
       {
         type: 'list',
         name: 'css',
-        message: '(7/12) What stylesheets do you want to use?',
+        message: chalk.reset('(7/12) What stylesheets do you want to use?'),
         choices: [
           {
-            name: 'CSS',
+            name: chalk.reset('CSS'),
             value: 'stylesheets',
             checked: false
           },
           {
-            name: 'SASS',
+            name: chalk.reset('SASS'),
             value: 'sass',
             selected: true
           },
           {
-            name: 'SCSS',
+            name: chalk.reset('SCSS'),
             value: 'scss',
             checked: false
           }
@@ -95,40 +136,41 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'frameworks',
-        message: '(8/12) Do you want to use a framework?',
+        message: chalk.reset('(8/12) Do you want to use a framework?'),
+        default: false,
         required: false
       },
       {
         type: 'list',
         name: 'chooseFramework',
-        message: '(8.1/12) Choose your favourite framework',
+        message: chalk.reset('(8.1/12) Choose your favourite framework'),
         required: false,
         when: function(answers) {
           return answers.frameworks === true;
         },
         choices: [
           {
-            name: 'Bootstrap 4',
+            name: chalk.reset('Bootstrap 4'),
             value: 'bootstrap4',
             checked: false
           },
           {
-            name: 'Foundation',
+            name: chalk.reset('Foundation'),
             value: 'foundation',
             checked: false
           },
           {
-            name: 'Semantic UI',
+            name: chalk.reset('Semantic UI'),
             value: 'semanticUi',
             checked: false
           },
           {
-            name: 'Material Design Lite',
+            name: chalk.reset('Material Design Lite'),
             value: 'materialDesignLite',
             checked: false
           },
           {
-            name: 'Materialize',
+            name: chalk.reset('Materialize'),
             value: 'materialize',
             checked: false
           }
@@ -137,7 +179,8 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'includeGrid',
-        message: '(9/12) Do you want to use a grid?',
+        message: chalk.reset('(9/12) Do you want to use a grid?'),
+        default: false,
         required: false,
         when: function(answers) {
           return answers.frameworks === false;
@@ -146,14 +189,14 @@ module.exports = class extends Generator {
       {
         type: 'checkbox',
         name: 'gridChoose',
-        message: '(9/12) Which grid do you prefer?',
+        message: chalk.reset('(9/12) Which grid do you prefer?'),
         required: false,
         when: function(answers) {
           return answers.includeGrid === true;
         },
         choices: [
           {
-            name: 'Toast Grid',
+            name: chalk.reset('Toast Grid'),
             value: 'toastGrid',
             checked: true
           }
@@ -162,13 +205,16 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'buildControll',
-        message: '(10/12) Do you want to use build controll for the Git repo?',
+        message: chalk.reset(
+          '(10/12) Do you want to use build controll for the Git repo?'
+        ),
+        default: false,
         required: false
       },
       {
         type: 'input',
         name: 'projectRepo',
-        message: '(10.1/12) What is the project repository url?',
+        message: chalk.reset('(10.1/12) What is the project repository url?'),
         required: false,
         when: function(answers) {
           return answers.buildControll === true;
@@ -177,19 +223,19 @@ module.exports = class extends Generator {
       {
         type: 'checkbox',
         name: 'gitBranch',
-        message: '(10.2/12) What Branch do you like to use?',
+        message: chalk.reset('(10.2/12) What Branch do you like to use?'),
         required: false,
         when: function(answers) {
           return answers.buildControll === true;
         },
         choices: [
           {
-            name: 'master',
+            name: chalk.reset('master'),
             value: 'master',
             checked: true
           },
           {
-            name: 'gh-pages',
+            name: chalk.reset('gh-pages'),
             value: 'gh-pages',
             checked: false
           }
@@ -198,13 +244,14 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'ftpUpload',
-        message: '(11/12) Do you want to use ftp upload on this project?',
+        message: chalk.reset('(11/12) Do you want to use ftp upload on this project?'),
+        default: false,
         required: false
       },
       {
         type: 'input',
         name: 'ftpHost',
-        message: '(11.1/12) What is your ftp host?',
+        message: chalk.reset('(11.1/12) What is your ftp host?'),
         required: true,
         when: function(answers) {
           return answers.ftpUpload === true;
@@ -213,7 +260,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpPort',
-        message: '(11.2/12) What is your ftp port?',
+        message: chalk.reset('(11.2/12) What is your ftp port?'),
         required: true,
         default: 21,
         when: function(answers) {
@@ -223,7 +270,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpDest',
-        message: '(11.3/12) What is the destionation path?',
+        message: chalk.reset('(11.3/12) What is the destionation path?'),
         required: true,
         default: '/public_html/',
         when: function(answers) {
@@ -233,8 +280,9 @@ module.exports = class extends Generator {
       {
         type: 'confirm',
         name: 'ftpKey',
-        message:
-          '(11.4/12) Do you want to store your ftp credentials inside the project? NOTICE: this could be dangerous if you use a public git repository, the storage file (.ftppass) will be available to everyone',
+        message: chalk.reset(
+          '(11.4/12) Do you want to store your ftp credentials inside the project? NOTICE: this could be dangerous if you use a public git repository, the storage file (.ftppass) will be available to everyone'
+        ),
         required: false,
         when: function(answers) {
           return answers.ftpUpload === true;
@@ -243,7 +291,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpUsername',
-        message: '(11.5/12) What is your ftp username?',
+        message: chalk.reset('(11.5/12) What is your ftp username?'),
         required: false,
         when: function(answers) {
           return answers.ftpKey === true;
@@ -252,7 +300,7 @@ module.exports = class extends Generator {
       {
         type: 'input',
         name: 'ftpPassword',
-        message: '(11.6/12) What is your ftp password?',
+        message: chalk.reset('(11.6/12) What is your ftp password?'),
         required: false,
         mask: '*',
         when: function(answers) {
@@ -262,20 +310,20 @@ module.exports = class extends Generator {
       {
         type: 'list',
         name: 'license',
-        message: '(12/12) What license do you want to use?',
+        message: chalk.reset('(12/12) What license do you want to use?'),
         choices: [
           {
-            name: 'Apache License 2.0',
+            name: chalk.reset('Apache License 2.0'),
             value: 'apache',
             checked: false
           },
           {
-            name: 'GNU General Public License V3',
+            name: chalk.reset('GNU General Public License V3'),
             value: 'gnu',
             checked: false
           },
           {
-            name: 'MIT License',
+            name: chalk.reset('MIT License'),
             value: 'mit',
             checked: false
           }
