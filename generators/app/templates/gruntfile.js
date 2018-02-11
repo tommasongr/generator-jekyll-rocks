@@ -96,6 +96,11 @@ module.exports = function (grunt) {
             '<%= appSource %>/assets/bower_components/modernizr',
             '<%= appSource %>/assets/bower_components/semantic'
           ],
+          grid: [
+            '<%= appSource %>/assets/css/toast-grid.min.css',
+            '<%= appSource %>/assets/css/1-tools/_toast-grid.scss',
+            '<%= appSource %>/assets/css/1-tools/_toast-grid.sass'
+          ],
           server: [
             '.jekyll',
             '.tmp'
@@ -279,6 +284,9 @@ module.exports = function (grunt) {
 
     grunt.registerTask('setup', [
       'copy:main',
+<% if (includeGrid == false) { -%>
+      'clean:grid',
+<% } -%>
       'clean:setup'
     ]);
 

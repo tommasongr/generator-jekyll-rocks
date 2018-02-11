@@ -1,2 +1,5 @@
 @import "normalize/import-now";
+<% if (includeToastGrid) { -%>
+@import "_toast-grid.scss";
+<% } -%>
 @import "_fonts.sass";
