@@ -335,6 +335,7 @@ module.exports = class extends Generator {
   writing() {
     if (this.includeFramework == true) {
       this.includeGrid = false;
+      this.includeToastGrid = false;
     }
     this.log('Scaffolding...');
 
@@ -350,6 +351,7 @@ module.exports = class extends Generator {
         includeSemanticUi: this.includeSemanticUi,
         includeMaterialDesignLite: this.includeMaterialDesignLite,
         includeMaterialize: this.includeMaterialize,
+        includeCss: this.includeCss,
         includeToastGrid: this.includeToastGrid
       }
     );
