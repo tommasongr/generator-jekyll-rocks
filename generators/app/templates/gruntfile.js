@@ -3,7 +3,14 @@
 module.exports = function (grunt) {
 
     require('time-grunt')(grunt);
+<% if (includeBuildControll == false) { -%>
     require('jit-grunt')(grunt);
+<% } -%>
+<% if (includeBuildControll) { -%>
+    require('jit-grunt')(grunt, {
+      buildcontrol: 'grunt-build-control'
+    });
+<% } -%>
 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
@@ -254,10 +261,10 @@ module.exports = function (grunt) {
       'sass:dist',
 <% } -%>
       'uglify:dist',
+      'jekyll:dist',
       'postcss:dist',
       'imagemin:dist',
-      'svgmin:dist',
-      'jekyll:dist'
+      'svgmin:dist'
     ]);
 
     grunt.registerTask('push', [
