@@ -108,10 +108,6 @@ module.exports = function (grunt) {
             '<%= appSource %>/assets/css/1-tools/_toast-grid.scss',
             '<%= appSource %>/assets/css/1-tools/_toast-grid.sass'
           ],
-          server: [
-            '.jekyll',
-            '.tmp'
-          ],
           clear: {
             files: [{
               src: [
@@ -248,7 +244,7 @@ module.exports = function (grunt) {
     });
 
     grunt.registerTask('serve', [
-      'clean:server',
+      'clean:clear',
 <% if (includeSass || includeScss) { -%>
       'sass:server',
 <% } -%>
@@ -260,7 +256,7 @@ module.exports = function (grunt) {
     ]);
 
     grunt.registerTask('build', [
-      'clear',
+      'clean:clear',
 <% if (includeSass || includeScss) { -%>
       'sass:dist',
 <% } -%>
