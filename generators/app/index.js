@@ -398,23 +398,32 @@ module.exports = class extends Generator {
     }
 
     if (this.includeApache) {
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('app/_license/Apache License 2.0'),
-        this.destinationPath('LICENSE')
+        this.destinationPath('LICENSE'),
+        {
+          authorName: this.authorName
+        }
       );
     }
 
     if (this.includeGnu) {
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('app/_license/GNU General Public License V3'),
-        this.destinationPath('LICENSE')
+        this.destinationPath('LICENSE'),
+        {
+          authorName: this.authorName
+        }
       );
     }
 
     if (this.includeMit) {
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('app/_license/MIT'),
-        this.destinationPath('LICENSE')
+        this.destinationPath('LICENSE'),
+        {
+          authorName: this.authorName
+        }
       );
     }
 
