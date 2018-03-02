@@ -180,6 +180,10 @@ module.exports = function (grunt) {
               require('cssnano')() // minify the result
             ]
           },
+          server: {
+            src: '<%= appDist %>/assets/css/main.css',
+            dest: '<%= appDist %>/assets/css/main.min.css'
+          },
           dist: {
             src: '<%= appSource %>/assets/css/main.css',
             dest: '<%= appSource %>/assets/css/main.min.css'
@@ -249,7 +253,7 @@ module.exports = function (grunt) {
       'sass:server',
 <% } -%>
       'uglify:dist',
-      'postcss:dist',
+      'postcss:server',
       'jekyll:server',
       'connect',
       'watch'
