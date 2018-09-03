@@ -75,7 +75,7 @@ module.exports = function (grunt) {
           files: [
             '<%= appSource %>/**/*'
           ],
-          tasks: [<% if (includeSass || includeScss) { -%>'sass:server',<% } -%>'uglify:dist','postcss:server','jekyll:server']
+          tasks: ['clean:clear',<% if (includeSass || includeScss) { -%>'sass:server',<% } -%>'uglify:dist','postcss:server','jekyll:server']
         },
         connect: {
           options: {
