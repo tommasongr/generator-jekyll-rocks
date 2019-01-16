@@ -17,6 +17,7 @@
   "license": "MIT",
 <% } -%>
   "scripts": {
+    "start": "grunt serve",
     "serve": "grunt serve",
     "build": "grunt build",
     "clear": "grunt clear",
